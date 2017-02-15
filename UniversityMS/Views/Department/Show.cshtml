@@ -1,0 +1,43 @@
+﻿@using UniversityMS.Models
+@model UniversityMS.Models.Department
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    List<Department> departments = ViewBag.DepartmentList;
+}
+
+<hgroup class="title">
+    <h1>Department</h1>
+    <h4>Show Department</h4>
+</hgroup>
+<hr />
+
+
+
+<table class="table table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DeptCode)</th>
+            <th>@Html.DisplayNameFor(model => model.DeptName)</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (Department aDepartment in departments) {
+        <tr>
+            <td>@aDepartment.DeptCode</td>
+            <td>@aDepartment.DeptName</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+    <tr>
+        <td class="success"></td>
+        <td class="danger"></td>
+    </tr>
+                        <tr></tr>
+                        <tr></tr>
+

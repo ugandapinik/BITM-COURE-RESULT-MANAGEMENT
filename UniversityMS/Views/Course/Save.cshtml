@@ -1,0 +1,108 @@
+﻿@model UniversityMS.Models.Course
+
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<hgroup class="title">
+    <h1>Department</h1>
+    <h4>Save Department</h4>
+</hgroup>
+<hr />
+<div align="center">
+    @if (@ViewBag.Message != null) {
+        <span class="alert alert-success" id="success-alert">@ViewBag.Message</span>
+    }
+</div>
+
+@using (Html.BeginForm()){
+    @Html.AntiForgeryToken()
+
+   
+<div class="form-horizontal col-lg-7">
+    @Html.ValidationSummary(true)
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.CourseCode, new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.TextBoxFor(model => model.CourseCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CourseCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.CourseName, new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.TextBoxFor(model => model.CourseName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.CourseCredit, new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.TextBoxFor(model => model.CourseCredit, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CourseCredit, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CourseDescription, new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.TextAreaFor(model => model.CourseDescription, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CourseDescription, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.DepartmentId, "Department", new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.DropDownList("DepartmentId", null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.SemesterId, "Semester", new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            @Html.DropDownList("SemesterId", null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SemesterId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <input type="submit" value="Save" class="btn btn-primary btn-sm" />
+        </div>
+    </div>
+</div>
+
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").alert('close');
+            });
+
+            $("#submit").click(function () {
+
+                //$("#deptCode").val("");
+                //$("#deptName").val("");
+               
+            });
+        });
+
+    </script>
+}
